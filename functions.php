@@ -1,6 +1,6 @@
 <?php
 
-define('VF_THEME_VER', '1.4.5');
+define('VF_THEME_VER', '1.4.6');
 
 add_action('after_setup_theme', 'vancoufur_setup');
 function vancoufur_setup() {
