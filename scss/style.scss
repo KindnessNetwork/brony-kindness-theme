@@ -4,7 +4,7 @@ Theme URI: https://github.com/sonicer105/vf-2023
 Author: Vancoufur, LinuxPony
 Author URI: https://vancoufur.org/
 Description: WordPress Theme for Vancoufur 2023. Released under the GPL.
-Version: 1.4.7
+Version: 1.4.8
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: one-column
@@ -150,7 +150,7 @@ input[type="password"], textarea {
         padding: 1rem;
         font-size: 2rem;
     }
- }
+}
 
 @media screen and (max-width: 960px) {
     .hide-on-sm {
@@ -503,6 +503,21 @@ html {
                 }
                 &:hover, &:active {
                     color: #ffffff;
+                }
+            }
+            .social-links {
+                padding-left: unset;
+
+                li {
+                    display: inline-block;
+                }
+                a {
+                    padding: 1rem;
+                    font-size: 1rem;
+
+                    &:first-child {
+                        padding-left: 0;
+                    }
                 }
             }
         }
@@ -979,10 +994,6 @@ aside .widget-container ul li {
     padding: 0.5em;
     height: auto;
     object-fit: cover;
-}
-
-.social-links {
-    padding-bottom: 0.5rem;
 }
 
 /*#endregion*/
