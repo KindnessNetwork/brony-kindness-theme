@@ -1,6 +1,6 @@
 <?php
 
-define('VF_THEME_VER', '1.4.9');
+define('VF_THEME_VER', '1.5.0');
 
 add_action('after_setup_theme', 'vancoufur_setup');
 function vancoufur_setup() {
@@ -536,8 +536,8 @@ function vf_save_postdata($post_id) {
 }
 add_action('save_post', 'vf_save_postdata');
 
-function vf_do_slider_or_image() {
-    $id = get_post()->ID;
+function vf_do_slider_or_image($id = null) {
+    $id = $id ?? get_post()->ID;
     $vf_header_type = get_post_meta($id, '_vf_header_type', true) ?? '';
 
     if($vf_header_type == 'sr'){
