@@ -1,6 +1,6 @@
 <?php
 
-define('VF_THEME_VER', '1.5.2');
+define('VF_THEME_VER', '1.5.3');
 
 add_action('after_setup_theme', 'vancoufur_setup');
 function vancoufur_setup() {
@@ -34,7 +34,7 @@ function vancoufur_load_scripts() {
 //    wp_register_script('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', ['jquery'], null);
 //    wp_enqueue_script('slick');
 
-    wp_register_script('fontawesome', 'https://kit.fontawesome.com/e38d08c644.js', ['jquery']);
+    wp_register_script('fontawesome', 'https://kit.fontawesome.com/afef0e765d.js', ['jquery']);
     wp_enqueue_script('fontawesome');
 
     wp_register_script('vancoufur-scripts', get_template_directory_uri() . '/js/global.js', ['jquery'], VF_THEME_VER);
