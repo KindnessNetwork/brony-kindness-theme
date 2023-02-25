@@ -25,16 +25,23 @@ function setupSearch() {
 
 function setupNav() {
     $('.menu-item-has-children > a').append(' ').append($('<i>').addClass('fas fa-caret-down'));
-    $('.menu-toggle-mobile').on('click', function (e) {
-        e.preventDefault();
+    $('.menu-toggle-mobile').on('click', function () {
         let active = $('#menu').toggleClass('active').hasClass('active');
         if (($('#header .toggle-hide').data('enabled') !== true && active) ||
             ($('#header .toggle-hide').data('enabled') === true && !active)) {
             // sync open state with nav
-            if (active) setTimeout(vancoufur_toggle_main_search, 300);
-            else vancoufur_toggle_main_search();
+            if (active) {
+                $(document.body).addClass("scroll-lock");
+                setTimeout(vancoufur_toggle_main_search, 300);
+            }
+            else {
+                $(document.body).removeClass("scroll-lock");
+                vancoufur_toggle_main_search();
+            }
         }
+        return false;
     });
+    $(`.main-menu>ul>li.menu-item-has-children>a[href='#']`).on('click', function (){return false;})
 }
 
 function setupFooter() {

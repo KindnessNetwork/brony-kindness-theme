@@ -1,6 +1,6 @@
 <?php
 
-define('VF_THEME_VER', '1.5.3');
+define('VF_THEME_VER', '1.5.4');
 
 add_action('after_setup_theme', 'vancoufur_setup');
 function vancoufur_setup() {
@@ -20,15 +20,14 @@ function vancoufur_setup() {
 
 add_action('wp_enqueue_scripts', 'vancoufur_load_scripts');
 function vancoufur_load_scripts() {
-    add_filter('style_loader_tag', 'vancoufur_add_script_sri', 10, 2);
-    add_filter('script_loader_tag', 'vancoufur_add_style_sri', 10, 2);
-
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i|Cabin:400,400i,700,700i&display=swap', [], null);
-    wp_enqueue_style('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', [], null);
+    //wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i|Cabin:400,400i,700,700i&display=swap', [], null);
+    //wp_enqueue_style('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', [], null);
     wp_enqueue_style('vancoufur-style', get_stylesheet_uri(), [], VF_THEME_VER);
 
     wp_deregister_script('jquery');
-    wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', [], null);
+    wp_deregister_script('jquery-core');
+//    wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', [], null);
+    wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.min.js', [], null);
     wp_enqueue_script('jquery');
 
 //    wp_register_script('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', ['jquery'], null);
@@ -39,27 +38,6 @@ function vancoufur_load_scripts() {
 
     wp_register_script('vancoufur-scripts', get_template_directory_uri() . '/js/global.js', ['jquery'], VF_THEME_VER);
     wp_enqueue_script('vancoufur-scripts');
-}
-
-function vancoufur_add_script_sri($html, $handle) {
-//    switch ($handle){
-//        case 'slick':
-//            $html = str_replace('></script>', ' integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous"></script>', $html);
-//            break;
-//    }
-    return $html;
-}
-
-function vancoufur_add_style_sri($html, $handle) {
-    switch ($handle){
-        case 'jquery':
-            $html = str_replace(' />', ' integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" />', $html);
-            break;
-//        case 'slick':
-//            $html = str_replace(' />', ' integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" />', $html);
-//            break;
-    }
-    return $html;
 }
 
 add_action('wp_footer', 'vancoufur_footer_scripts');
