@@ -28,7 +28,9 @@ function vancoufur_load_scripts() {
     wp_deregister_script('jquery-core');
 //    wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', [], null);
     wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.min.js', [], null);
+    wp_register_script('jquery-core', get_template_directory_uri() . '/js/dummy.js', [], null);
     wp_enqueue_script('jquery');
+    wp_enqueue_script('jquery-core');
 
 //    wp_register_script('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', ['jquery'], null);
 //    wp_enqueue_script('slick');
