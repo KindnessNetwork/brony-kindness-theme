@@ -2,11 +2,11 @@ function setupSearch() {
     $('#header .toggle-hide').on('click', function (e) {
         e.preventDefault();
         if ($('#menu').hasClass('active')) return; // Prevent toggle in mobile
-        vancoufur_toggle_main_search();
+        bkn_toggle_main_search();
     });
     $('#header .search-field').on('focus', function () {
         if ($('#header .toggle-hide').data('enabled') !== true) {
-            vancoufur_toggle_main_search();
+            bkn_toggle_main_search();
         }
     });
     $('#header .search-form').on('scroll', function () {
@@ -32,11 +32,11 @@ function setupNav() {
             // sync open state with nav
             if (active) {
                 $(document.body).addClass("scroll-lock");
-                setTimeout(vancoufur_toggle_main_search, 300);
+                setTimeout(bkn_toggle_main_search, 300);
             }
             else {
                 $(document.body).removeClass("scroll-lock");
-                vancoufur_toggle_main_search();
+                bkn_toggle_main_search();
             }
         }
         return false;
@@ -61,15 +61,15 @@ function toggleOnScroll() {
 
 let timeout;
 
-function vancoufur_toggle_main_search() {
+function bkn_toggle_main_search() {
     let button = $('#header .toggle-hide');
     if ($(button).data('enabled') !== true) {
         $('#search').addClass('active');
         $('#header .search-field, #header .search-submit').removeAttr('style');
         $(button).addClass('active').data('enabled', true);
         $('#header .search-form')
-            .css('background', 'rgba(255,255,255,1)')
-            .css('width', '312px');
+            .css('background', '#eee')
+            .css('width', '343px');
         if ($('#menu').hasClass('active')) return; // Prevent focus in mobile
         $('#header .search-field').focus();
         clearTimeout(timeout);
@@ -78,7 +78,7 @@ function vancoufur_toggle_main_search() {
         $(button).removeClass('active').data('enabled', false);
         $('#header .search-form')
             .css('background', 'rgba(255,255,255,0)')
-            .css('width', '2em');
+            .css('width', '3em');
         timeout = setTimeout(function () {
             $('#header .search-field, #header .search-submit').css({
                 'position': 'absolute',

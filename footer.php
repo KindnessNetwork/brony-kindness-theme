@@ -17,9 +17,9 @@
                 </div>
             <?php } ?>
         </nav>
-        <div class="copyright">
-            &copy; <?php echo esc_html( date_i18n( __( 'Y', 'vancoufur' ) ) ); ?> &ndash; British Columbia Anthropomorphic Events Association
-        </div>
+        <!--<div class="copyright">
+            &copy; <?php echo esc_html( date_i18n( __( 'Y', 'bkn' ) ) ); ?> &ndash; <?php _e('Brony Kindness Network', 'bkn'); ?>
+        </div>-->
     </footer>
 </div><!-- #wrapper -->
 <?php if(is_woocommerce_activated()){

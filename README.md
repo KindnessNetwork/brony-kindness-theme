@@ -1,10 +1,8 @@
-# vf-2023
+# Brony Kindness Theme
 
-WordPress Theme used by Vancoufur in 2023.
+WordPress Theme used by the Brony Kindness Network.
 
 Boilerplate Blank WordPress Theme by TidyThemes was used as a base.
-
-LP's Events Modules Plugin is highly suggested.
 
 Theme Licensed under the GPL.
 

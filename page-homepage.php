@@ -7,7 +7,7 @@ get_header(); ?>
         <?php if (have_posts()){
             while (have_posts()){
                 the_post();
-                vf_do_slider_or_image(); ?>
+                bkn_do_slider_or_image(); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <div class="entry-wrapper">
                         <div class="article-wrapper">
@@ -34,7 +34,7 @@ get_header(); ?>
                 </article>
             <?php }
         } ?>
-        <div class="news-wrapper">
+        <div class="news-wrapper" style="display: none;">
             <hr>
             <h2 class="news-title">LATEST NEWS</h2>
             <?php $the_query = new WP_Query( array(

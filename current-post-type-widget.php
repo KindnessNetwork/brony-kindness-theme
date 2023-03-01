@@ -5,7 +5,7 @@ class List_Current_Post_Type_Widget extends WP_Widget{
         parent::__construct(
             'list-current-post-type',  // Base ID
             'List Custom Post Type',   // Name
-            ['description' => __( 'Lists all the posts that match the current post\'s post type' , 'vancoufur' )]
+            ['description' => __( 'Lists all the posts that match the current post\'s post type' , 'bkn' )]
         );
         add_action('widgets_init', function(){
             register_widget( 'List_Current_Post_Type_Widget');
@@ -46,7 +46,7 @@ class List_Current_Post_Type_Widget extends WP_Widget{
     }
 
     public function form($instance) {
-        $title = !empty($instance['title'])? $instance['title'] : esc_html__('', 'vancoufur');
+        $title = !empty($instance['title'])? $instance['title'] : esc_html__('', 'bkn');
         ?>
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Title:', 'text_domain' ); ?></label>

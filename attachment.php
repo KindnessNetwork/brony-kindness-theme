@@ -4,7 +4,7 @@
         <?php if (have_posts()) {
             while (have_posts()) {
                 the_post(); ?>
-                <?php vf_do_slider_or_image() ?>
+                <?php bkn_do_slider_or_image() ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <header class="header">
                         <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -15,10 +15,10 @@
                             $current_attachment = get_queried_object();
                             if ($current_attachment->post_parent > 0) { ?>
                                 <a href="<?php echo esc_url(get_permalink($post->post_parent)); ?>"
-                                   title="<?php printf(esc_html__('Return to %s', 'vancoufur'), esc_html(get_the_title($post->post_parent))); ?>"
+                                   title="<?php printf(esc_html__('Return to %s', 'bkn'), esc_html(get_the_title($post->post_parent))); ?>"
                                    rev="attachment" class="button">
                                     <?php printf(
-                                        esc_html__('%s Return to ', 'vancoufur'),
+                                        esc_html__('%s Return to ', 'bkn'),
                                         '<span class="fas fa-lg fa-chevron-left" aria-hidden="true"></span>'
                                     ); ?>
                                     <?php echo get_the_title($post->post_parent); ?>
