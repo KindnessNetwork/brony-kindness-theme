@@ -1,6 +1,6 @@
 <?php
 
-define('BKN_THEME_VER', '1.5.5');
+define('BKN_THEME_VER', '1.5.6');
 
 add_action('after_setup_theme', 'bkn_setup');
 function bkn_setup() {
@@ -275,11 +275,7 @@ function wrap_embed_with_div($html, $url, $attr) {
 //add_action('woocommerce_before_customer_login_form', 'bkn_login_message');
 //function bkn_login_message() {
 //    if (get_option('woocommerce_enable_myaccount_registration') == 'yes') {
-//        ?>
-<!--        <div class="woocommerce-info">-->
-<!--            <span>--><?php //_e('NOTE: This account is NOT linked to the registration system. You will need to create a new account. You cannot login to your reg account from here. '); ?><!--</span>-->
-<!--        </div>-->
-<!--        --><?php
+//
 //    }
 //}
 
