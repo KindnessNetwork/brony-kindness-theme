@@ -1,6 +1,6 @@
 <?php
 
-define('BKN_THEME_VER', '1.5.7');
+define('BKN_THEME_VER', '1.5.8');
 
 add_action('after_setup_theme', 'bkn_setup');
 function bkn_setup() {
