@@ -1,6 +1,6 @@
 <?php
 
-define('BKN_THEME_VER', '1.5.6');
+define('BKN_THEME_VER', '1.5.7');
 
 add_action('after_setup_theme', 'bkn_setup');
 function bkn_setup() {
@@ -37,6 +37,8 @@ function bkn_load_scripts() {
 
     wp_register_script('fontawesome', 'https://kit.fontawesome.com/fb8754480c.js', ['jquery']);
     wp_enqueue_script('fontawesome');
+    wp_deregister_style('vc_font_awesome_5'); // We have our own. Let's replace it.
+    wp_register_style('vc_font_awesome_5', get_template_directory_uri() . '/css/dummy.css', [], null);
 
     wp_register_script('bkn-scripts', get_template_directory_uri() . '/js/global.js', ['jquery'], BKN_THEME_VER);
     wp_enqueue_script('bkn-scripts');
