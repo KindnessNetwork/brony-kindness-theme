@@ -27,9 +27,9 @@ if(bkn_has_webp_support()){
                     </div>
                     <div class="social">
                         <ul class="menu">
-                            <li class="menu-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i><span class="screen-reader-text">Instagram</span></a></li>
-                            <li class="menu-item"><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i><span class="screen-reader-text">Facebook</span></a></li>
-                            <li class="menu-item"><a href="#"><i class="fab fa-youtube" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a></li>
+                            <li class="menu-item"><a href="/discord"><i class="fab fa-discord" aria-hidden="true"></i><span class="screen-reader-text">Discord</span></a></li>
+                            <li class="menu-item"><a href="/twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span></a></li>
+                            <li class="menu-item"><a href="/mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span class="screen-reader-text">Mastodon</span></a></li>
                         </ul>
                     </div>
                 </div>
