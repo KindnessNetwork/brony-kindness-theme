@@ -30,6 +30,8 @@ if(bkn_has_webp_support()){
                             <li class="menu-item"><a href="/discord"><i class="fab fa-discord" aria-hidden="true"></i><span class="screen-reader-text">Discord</span></a></li>
                             <li class="menu-item"><a href="/twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span></a></li>
                             <li class="menu-item"><a href="/mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span class="screen-reader-text">Mastodon</span></a></li>
+                            <li class="menu-item"><a href="/twitch"><i class="fab fa-twitch" aria-hidden="true"></i><span class="screen-reader-text">Twitch</span></a></li>
+                            <li class="menu-item"><a href="/youtube"><i class="fab fa-youtube" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a></li>
                         </ul>
                     </div>
                 </div>
