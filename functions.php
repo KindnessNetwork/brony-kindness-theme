@@ -540,4 +540,55 @@ function bkn_maybe_replace_webp($url) {
     return $url;
 }
 
+/**
+ *
+ *  @author     Christopher Davies, WP Davies
+ *  @link       https://wpdavies.dev/
+ *  @link       https://wpdavies.dev/automatically-complete-virtual-orders-woocommerce/
+ *  @snippet    Automatically complete orders in WooCommerce
+ *
+ */
+add_action('woocommerce_thankyou', 'wpd_autocomplete_virtual_orders', 10, 1 );
+function wpd_autocomplete_virtual_orders( $order_id ) {
+
+    if( ! $order_id ) return;
+
+    // Get order
+    $order = wc_get_order( $order_id );
+
+    // Do not auto-complete orders marked as On Hold, as those require
+    // manual review to confirm payment
+    if ( $order->status == 'on-hold' ) {
+        return;
+    }
+    // get order items = each product in the order
+    $items = $order->get_items();
+
+    // Set variable
+    $only_virtual = true;
+
+    foreach ( $items as $item ) {
+
+        // Get product id
+        $product = wc_get_product( $item['product_id'] );
+
+        // Is virtual
+        $is_virtual = $product->is_virtual();
+
+        // Is_downloadable
+        $is_downloadable = $product->is_downloadable();
+
+        if ( ! $is_virtual && ! $is_downloadable  ) {
+            $only_virtual = false;
+        }
+
+    }
+
+    // true
+    if ( $only_virtual ) {
+        $order->update_status( 'completed' );
+    }
+}
+
 require_once 'current-post-type-widget.php';
+
