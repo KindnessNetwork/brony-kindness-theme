@@ -34,30 +34,5 @@ get_header(); ?>
                 </article>
             <?php }
         } ?>
-        <div class="news-wrapper" style="display: none;">
-            <hr>
-            <h2 class="news-title">LATEST NEWS</h2>
-            <?php $the_query = new WP_Query( array(
-                'category_name' => 'news',
-                'posts_per_page' => 3,
-            )); ?>
-            <?php if ($the_query->have_posts()) { ?>
-                <div class="news-container">
-                <?php while ($the_query->have_posts()) {
-                    $the_query->the_post(); ?>
-                    <div class="news-item">
-                        <?php the_post_thumbnail(); ?>
-                        <div class="news-content">
-                            <h3><?php the_title(); ?></h3>
-                            <a href="<?php echo get_permalink(); ?>">READ MORE</a>
-                        </div>
-                    </div>
-                <?php } ?>
-                </div>
-                <?php wp_reset_postdata();
-            } else { ?>
-                <p><?php __('No News :\'('); ?></p>
-            <?php } ?>
-        </div>
     </main>
 <?php get_footer(); ?>

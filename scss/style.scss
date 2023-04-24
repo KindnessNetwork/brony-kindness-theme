@@ -4,7 +4,7 @@ Theme URI: https://github.com/KindnessNetwork/brony-kindness-theme
 Author: Brony Kindness Network, LinuxPony
 Author URI: https://bronykindness.net/
 Description: WordPress Theme for the Brony Kindness Network. Based on BlankSlate WordPress Theme © 2011-2019 TidyThemes. BlankSlate is distributed under the terms of the GNU GPL.
-Version: 1.5.10
+Version: 1.5.11
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: one-column title-tag automatic-feed-links post-thumbnails html5 search-form woocommerce
@@ -211,13 +211,20 @@ code, kbd {
 
     .splash {
         color: #fff;
+        //noinspection CssUnknownTarget
         background-image: url("./img/homepage-bg.png");
         background-size: cover;
-        margin: -1em -1em 0 -1em;
-        padding: 1em;
+        margin: 0 -1em;
+        padding: 3rem 1em;
         @media (min-width:1280px) {
             margin-left: calc(-100vw / 2 + 1280px / 2 - 1em);
             margin-right: calc(-100vw / 2 + 1280px / 2 - 1em);
+        }
+
+        h1 {
+            padding: 0;
+            margin: 46px 0 35px 0;
+            text-align: center;
         }
 
         @media (min-width:768px) {
@@ -246,7 +253,7 @@ code, kbd {
     }
 
     article {
-        padding: 1em;
+        padding: 0 1em 1em 1em;
     }
 
     .cover-image {
@@ -262,9 +269,12 @@ code, kbd {
         height: 500px;
     }
     .no-content-spacer {
-        height: 3em;
+        height: 5rem;
         @media screen and (max-width: 1280px) {
-            height: 2em;
+            height: 4rem;
+        }
+        @media screen and (max-width: 600px) {
+            display: none;
         }
     }
 
@@ -289,45 +299,15 @@ code, kbd {
 
     }
 }
-body.webp #content.standard .splash {
-    background-image: url("./img/homepage-bg.webp");
+html.admin-bar #content.standard .no-content-spacer {
+    height: 5rem;
+    @media screen and (max-width: 1280px) {
+        height: 4rem;
+    }
 }
-
-.news-wrapper {
-    padding: 1rem;
-
-    .news-title {
-        font-weight: normal;
-        padding: 1rem 0;
-    }
-    .news-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-
-        @media screen and (max-width: 1200px) {;
-            flex-direction: column;
-        }
-
-        img {
-            padding-right: 1rem;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .news-item {
-            width: 33%;
-            display: flex;
-            flex-direction: row;
-
-            @media screen and (max-width: 1200px) {;
-                width: 100%;
-                padding: 0.5rem 0;
-            }
-        }
-    }
+body.webp #content.standard .splash {
+    //noinspection CssUnknownTarget
+    background-image: url("./img/homepage-bg.webp");
 }
 
 /*#endregion*/
@@ -335,7 +315,7 @@ body.webp #content.standard .splash {
 /*#region Header & Navigation */
 
 #menu {
-    z-index: 100;
+    z-index: 101;
     background-color: $nav_bg;
     position: fixed;
     top: 0;
@@ -762,86 +742,6 @@ article.has-post-thumbnail {
 
 /*#endregion*/
 
-/*#region Homepage Layout */
-
-.homepage-cta-registration {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    white-space: nowrap;
-
-    @media (max-width: 767px) {
-        justify-content: center;
-        text-align: center;
-    }
-
-    a {
-        font-size: 2rem;
-        font-weight: bold;
-        display: inline-block;
-        text-decoration: none;
-        padding: 1.25rem 2rem;
-        color: #000;
-        border-radius: 1rem;
-        background: rgba(110,240,237,1);
-        background: linear-gradient(0deg, rgba(110,240,237,1) 0%, rgba(75,154,163,1) 100%);
-        white-space: nowrap;
-    }
-}
-
-/*#endregion*/
-
-/*#region Livestream Page Layout */
-
-.livestream-layout {
-    display: flex;
-    flex-direction: row;
-
-    .livestream-video {
-        width: 75%;
-    }
-
-    .livestream-chat {
-        width: 25%;
-    }
-
-    iframe, widgetbot {
-        width: 100%;
-        height: 80vh;
-    }
-}
-
-/*#endregion*/
-
-/*#region Vendors Page */
-
-.vendor-grid {
-    @media (min-width: 769px) {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-        .vendor {
-            width: 49%;
-        }
-    }
-    .vendor {
-        text-align: center;
-        padding: 1rem 0;
-        margin-bottom: 1rem;
-        border-bottom: 2px solid #000;
-
-        img {
-            height: 300px;
-            width: 100%;
-            object-fit: contain;
-        }
-    }
-}
-
-/*#endregion*/
-
 /*#region Pagination */
 
 .nav-links {
@@ -874,10 +774,19 @@ article.has-post-thumbnail {
 
 /*#region Normal Page Layout */
 
+.single-post .wp-post-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 400px;
+}
+
 aside {
     text-align: left;
-    border-top: 2px solid #000000;
-    margin-top: 1em;
+    background: #eee;
+    padding: 0 1em;
+    //border-top: 2px solid #ccc;
+    //margin-top: 1em;
 
     h1, h2, h3, h4, h5, h6 {
         text-align: center;
@@ -942,19 +851,19 @@ aside {
 @media screen and (min-width: 960px) {
     #content.standard.has-sidebar .entry-wrapper {
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
 
         .article-wrapper {
             width: calc(100% - calc(303px + 1em));
-            padding-right: 1em;
+            padding-left: 1em;
         }
 
         aside {
             width: calc(303px + 1em);
-            padding-left: 1em;
-            border-left: 2px solid #000000;
-            border-top: none;
-            margin-top: 0;
+            //padding-right: 1em;
+            //border-right: 2px solid #ccc;
+            //border-top: none;
+            //margin-top: 0;
         }
     }
 
@@ -967,85 +876,6 @@ aside {
         .post-except-content {
             flex-grow: 1;
         }
-    }
-}
-
-/*#endregion*/
-
-/*#region Hotel Page Layout */
-
-.hotel-info-columns {
-    text-align: left;
-}
-
-/*#endregion*/
-
-/*#region Registration Page Layout */
-
-.reg-tiers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 1200px;
-
-    .reg-tier {
-        flex-basis: 33.33%;
-        padding: 150px 0.5em 0.5em 0.5em;
-
-        .tier-header {
-            border-radius: 1em 1em 0 0;
-            text-align: center;
-            padding-bottom: 0.5em;
-            z-index: 2;
-
-            h3 {
-                margin: 0.25em;
-            }
-
-            strike {
-                opacity: 0.25;
-            }
-
-            .tier-image {
-                margin-top: -150px;
-            }
-        }
-
-        .tier-content {
-            background: #fff;
-            padding: 0.5em;
-            box-shadow: inset 0 4px 3px -3px rgba(0,0,0,0.75);
-
-            ul {
-                list-style: none;
-
-                li {
-                    margin: 0.25em 0;
-                    position: relative;
-
-                    &:before {
-                        left: -1.5em;
-                        display: block;
-                        position: absolute;
-                        content: '\f058';
-                        font-family: "Font Awesome 5 Pro";
-                        font-weight: normal;
-                        color: #458800;
-                    }
-                }
-            }
-        }
-
-        @media (max-width: 710px) {
-            flex-basis: 100%;
-            max-width: 500px;
-            padding: 150px 0 0.5em 0;
-        }
-    }
-
-    @media (max-width: 710px) {
-        margin: 0 -0.5em;
     }
 }
 
@@ -1067,10 +897,22 @@ aside {
 /*#region Post Type List Widget and others */
 
 aside .widget-container ul li {
-    padding: 0.5em;
+    //padding: 0.5em;
+    //
+    //&:nth-child(odd) {
+    //    background-color: rgba(0, 0, 0, 0.1);
+    //}
+    position: relative;
 
-    &:nth-child(odd) {
-        background-color: rgba(0, 0, 0, 0.1);
+    ul {
+        padding-left: 1em;
+
+        li:before {
+            position: absolute;
+            content: '\2514';
+            top: 0;
+            left: -1em;
+        }
     }
 }
 
@@ -1101,17 +943,6 @@ aside .widget-container ul li {
             }
         }
     }
-}
-
-/*#endregion*/
-
-/*#region Custom Post Type Styles - VIPs */
-
-.vip-images img {
-    width: 50%;
-    padding: 0.5em;
-    height: auto;
-    object-fit: cover;
 }
 
 /*#endregion*/
@@ -1238,30 +1069,6 @@ aside .widget-container ul li {
 
 /*#endregion*/
 
-/*#region Homepage Scroll Down */
-
-#homepage-scroll-down-container {
-    pointer-events: none;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    padding-bottom: 0.5em;
-    transition: 250ms opacity;
-    opacity: 1;
-
-    #homepage-scroll-down {
-        display: inline-block;
-        padding: 0.5em;
-        color: #fff;
-        background: #333;
-        border-radius: 5px;
-    }
-}
-
-/*#endregion*/
-
 /*#region Return To Top and Go To Cart Widgets */
 
 #return-to-top, #go-to-cart {
@@ -1326,128 +1133,96 @@ aside .widget-container ul li {
 
 /*#endregion*/
 
-/*#region Slick Sliders */
-
-.slick-slider {
-    position: relative;
-    margin: 1em 0;
-
-    .slick-slide {
-        padding: 0.5em;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-    }
-
-    .slick-arrow {
-        display: block;
-        position: absolute;
-        background: #fff;
-        z-index: 10;
-        top: 50%;
-        border-radius: 2rem;
-        height: 3rem;
-        width: 3rem;
-        padding: 0;
-        border: none;
-        text-align: center;
-        box-shadow: 0 0 2px rgba(0,0,0,0.75);
-        transition: 250ms;
-
-        &.slick-prev {
-            left: calc(0.75em + 2px);
-        }
-
-        &.slick-next {
-            right: 0.75em;
-        }
-
-        .fas:before {
-            font-size: 1.5em;
-        }
-
-        &:hover {
-            background: #fff;
-            color: #f00;
-            box-shadow: 0 0 4px rgba(0,0,0,0.5);
-        }
-    }
-
-    .slick-dots {
-        text-align: center;
-        list-style: none;
-        padding-left: 0;
-
-        li {
-            display: inline;
-
-            button {
-                display: inline-block;
-                padding: 0;
-                line-height: 0;
-                font-size: 0;
-                width: 20px;
-                height: 20px;
-                border-radius: 10px;
-                border: none;
-                background: #000;
-                margin: 0 10px;
-                transition: background-color 250ms;
-
-                &:hover {
-                    background: #900;
-                }
-            }
-
-            &.slick-active button{
-                background: #f00;
-            }
-        }
-    }
-}
-
-/*#endregion*/
-
-/*#region Hotel Slick Slider */
-
-.hotel-slider.slick-slider {
-    .slick-arrow {
-        top: 18%;
-    }
-    .img-container {
-        position: relative;
-        .room-photo {
-            background-color: #000;
-        }
-        .img-header, .img-price {
-            position: absolute;
-            padding: 0.25rem;
-            margin: 0;
-            text-shadow: 0 0 2px #000;
-        }
-        .img-header {
-            color: #fff;
-            bottom: 0;
-            left: 0;
-        }
-        .img-price {
-            color: #f00;
-            top: 0;
-            right: 0;
-        }
-    }
-    .description {
-        font-size: 0.8em;
-    }
-}
-
-/*#endregion*/
-
 /*#region WooCommerce */
+
+#content.standard.shop-archive  {
+    .entry-wrapper {
+        margin: 1em;
+    }
+}
+
+.woocommerce div.product form.cart div.quantity {
+    display: block;
+    float: none;
+    input {
+        min-width: 8em;
+    }
+}
+
+.woocommerce div.product form.cart {
+    margin-bottom: 0;
+}
+
+.woocommerce div.product form.cart .button {
+    margin-top: 1em;
+    float: none;
+    display: block;
+    width: 100%;
+    padding: 1.25em;
+}
+
+.woocommerce .product .product_meta {
+    margin: 1em 0;
+}
+
+.woocommerce .woocommerce-Reviews {
+    background: rgba(0,0,0,0.1);
+    padding: 1px 1em;
+
+    .required {
+        color: #f00;
+    }
+
+    select, input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]):not([type=reset]) {
+        display: block;
+
+        @media (max-width: 600px) {
+            width: 100%;
+        }
+    }
+
+    textarea {
+        display: block;
+        width: 100% !important;
+    }
+
+    .comment-form-rating .stars {
+        margin-bottom: 0 !important;
+        line-height: 1em;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 0.5em;
+    }
+
+    .form-submit .submit:not(:hover) {
+        background: #fff !important;
+    }
+}
+
+.woocommerce #reviews #comments ol.commentlist {
+    margin-top: 2em;
+    padding-left: 0;
+
+    li {
+        border-bottom: 1px solid #ccc;
+
+        img.avatar {
+            width: 48px;
+            height: 48px;
+            margin: 0.5em;
+            border-radius: 50%;
+        }
+        .comment-text {
+            padding-top: 0;
+
+            p.meta {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
 
 .woocommerce-checkout .entry-sub-header .entry-updated,
 .woocommerce-cart .entry-sub-header .entry-updated,
@@ -1573,15 +1348,16 @@ aside .widget-container ul li {
     border: 1px solid #000000;
     border-radius: 0;
     transition: color 250ms;
+    margin: 0 -2px 0 -3px
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li a:hover {
-    color: #f00;
+    color: $primary_accent;
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li.active {
-    background: #f2eecb;
-    border-bottom: 1px solid #f2eecb;
+    background: #ffffff;
+    border-bottom: 1px solid #ffffff;
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs::before {

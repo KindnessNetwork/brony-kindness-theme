@@ -1,6 +1,6 @@
 <?php
 
-define('BKN_THEME_VER', '1.5.10');
+define('BKN_THEME_VER', '1.5.11');
 
 add_action('after_setup_theme', 'bkn_setup');
 function bkn_setup() {
@@ -135,6 +135,14 @@ function bkn_widgets_init() {
     register_sidebar(array(
         'name' => 'Footer Widget Area 3',
         'id' => 'footer-widget-area-3',
+        'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => 'Products Sidebar',
+        'id' => 'product-sidebar',
         'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="widget-title">',

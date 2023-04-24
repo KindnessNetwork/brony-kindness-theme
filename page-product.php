@@ -29,9 +29,9 @@
                         <?php } ?>
                         <div class="entry-links"><?php wp_link_pages(); ?></div>
                     </div>
-                    <?php if (comments_open() && !post_password_required()) {
+                    <?php /* if (comments_open() && !post_password_required()) {
                         comments_template( '', true );
-                    } ?>
+                    } */ ?>
                 </div>
             </div>
         </article>

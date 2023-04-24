@@ -1,7 +1,7 @@
 <?php get_header(); ?>
-<main id="content" class="standard blog">
+<main id="content" class="standard shop-archive has-sidebar">
     <?php bkn_do_slider_or_image() ?>
-    <header class="header">
+    <header class="header splash header-container-smaller">
         <?php $shop_page = get_post(get_option('woocommerce_shop_page_id'));
         $title = get_the_archive_title();
         if(strpos($title, 'Archive') === 0) {
@@ -40,6 +40,7 @@
             }
             ?>
         </div>
+        <?php get_sidebar( 'product' ); ?>
     </div>
 </main>
 <?php get_footer(); ?>
