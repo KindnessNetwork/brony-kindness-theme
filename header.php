@@ -20,20 +20,20 @@ if(bkn_has_webp_support()){
             <a href="#" aria-hidden="true" class="menu-toggle-mobile"><span class="fas fa-bars"></span></a>
             <div class="nav-wrapper">
                 <div class="menu-wrapper">
-                    <a href="/" id="head-nav-img"><img src="<?php echo get_template_directory_uri() . bkn_maybe_replace_webp('/img/logo.png') ?>" class="logo" alt="Brony Kindness Network Logo"></a>
+                    <a href="<?php echo get_home_url(null, '/', 'relative'); ?>" id="head-nav-img"><?php
+                    $custom_logo_id = get_theme_mod( 'custom_logo' );
+                    $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                    if ( has_custom_logo() ) {
+                        echo '<img src="' . esc_url( $logo[0] ) . '" class="logo" alt="' . get_bloginfo( 'name' ) . '">';
+                    } else {
+                        echo '<h1 class="no-logo">' . get_bloginfo('name') . '</h1>';
+                    }
+                    ?></a>
                     <div class="menu-links">
                         <?php wp_nav_menu(array('theme_location' => 'main-menu', 'container_class' => 'main-menu')); ?>
                         <div id="search"><?php get_search_form(['main-nav' => true]); ?></div>
                     </div>
-                    <div class="social">
-                        <ul class="menu">
-                            <li class="menu-item"><a href="/discord"><i class="fab fa-discord" aria-hidden="true"></i><span class="screen-reader-text">Discord</span></a></li>
-                            <li class="menu-item"><a href="/twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span></a></li>
-                            <li class="menu-item"><a href="/mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span class="screen-reader-text">Mastodon</span></a></li>
-                            <li class="menu-item"><a href="/twitch"><i class="fab fa-twitch" aria-hidden="true"></i><span class="screen-reader-text">Twitch</span></a></li>
-                            <li class="menu-item"><a href="/youtube"><i class="fab fa-youtube" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a></li>
-                        </ul>
-                    </div>
+                    <?php bkn_do_social_menu(); ?>
                 </div>
             </div>
         </nav>

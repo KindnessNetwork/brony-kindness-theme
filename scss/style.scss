@@ -4,7 +4,7 @@ Theme URI: https://github.com/KindnessNetwork/brony-kindness-theme
 Author: Brony Kindness Network, LinuxPony
 Author URI: https://bronykindness.net/
 Description: WordPress Theme for the Brony Kindness Network. Based on BlankSlate WordPress Theme © 2011-2019 TidyThemes. BlankSlate is distributed under the terms of the GNU GPL.
-Version: 1.5.11
+Version: 1.5.12
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: one-column title-tag automatic-feed-links post-thumbnails html5 search-form woocommerce
@@ -378,6 +378,15 @@ body.webp #content.standard .splash {
                 //}
             }
 
+            #head-nav-img h1.no-logo {
+                display: flex;
+                height: 5rem;
+                padding: 1rem 1px;
+                margin: 0;
+                font-size: 1rem;
+                align-items: center;
+            }
+
             .menu-links {
                 display: flex;
                 align-items: center;
@@ -464,6 +473,10 @@ body.webp #content.standard .splash {
                     height: 4em;
                     margin: 0 auto;
                     padding: 0.5em;
+                }
+                #head-nav-img h1.no-logo {
+                    height: 4em;
+                    justify-content: center;
                 }
 
                 .menu-links {

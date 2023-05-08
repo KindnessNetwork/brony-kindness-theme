@@ -1,11 +1,21 @@
 <?php
 
-define('BKN_THEME_VER', '1.5.11');
+define('BKN_THEME_VER', '1.5.12');
+
+$bkn_fallback_google_fonts_url = 'https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap';
+$bkn_fallback_fontawesome_url = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
 
 add_action('after_setup_theme', 'bkn_setup');
 function bkn_setup() {
     load_theme_textdomain('bkn', get_template_directory() . '/languages');
     add_theme_support('title-tag');
+    add_theme_support('custom-logo', array(
+        'height'               => 100,
+        'width'                => 400,
+        'flex-height'          => true,
+        'flex-width'           => true,
+        'unlink-homepage-logo' => false,
+    ));
     add_theme_support('automatic-feed-links');
     add_theme_support('post-thumbnails');
     add_theme_support('html5', array('search-form'));
@@ -20,22 +30,27 @@ function bkn_setup() {
 
 add_action('wp_enqueue_scripts', 'bkn_load_scripts');
 function bkn_load_scripts() {
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap', [], null);
-    //wp_enqueue_style('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', [], null);
+    $google_fonts = get_option('google_fonts_resource_url');
+    if (empty($google_fonts)){
+        global $bkn_fallback_google_fonts_url;
+        $google_fonts = $bkn_fallback_google_fonts_url;
+    }
+    wp_enqueue_style('google-fonts', $google_fonts, [], null);
     wp_enqueue_style('bkn-style', get_stylesheet_uri(), [], BKN_THEME_VER);
 
     wp_deregister_script('jquery');
     wp_deregister_script('jquery-core');
-//    wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', [], null);
     wp_register_script('jquery', get_template_directory_uri() . '/js/jquery.min.js', [], null);
     wp_register_script('jquery-core', get_template_directory_uri() . '/js/dummy.js', [], null);
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-core');
 
-//    wp_register_script('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', ['jquery'], null);
-//    wp_enqueue_script('slick');
-
-    wp_register_script('fontawesome', 'https://kit.fontawesome.com/fb8754480c.js', ['jquery']);
+    $fontawesome = get_option('fontawesome_resource_url');
+    if (empty($fontawesome)){
+        global $bkn_fallback_fontawesome_url;
+        $fontawesome = $bkn_fallback_fontawesome_url;
+    }
+    wp_register_script('fontawesome', $fontawesome, ['jquery']);
     wp_enqueue_script('fontawesome');
     wp_deregister_style('vc_font_awesome_5'); // We have our own. Let's replace it.
     wp_register_style('vc_font_awesome_5', get_template_directory_uri() . '/css/dummy.css', [], null);
@@ -549,54 +564,25 @@ function bkn_maybe_replace_webp($url) {
 }
 
 /**
- *
- *  @author     Christopher Davies, WP Davies
- *  @link       https://wpdavies.dev/
- *  @link       https://wpdavies.dev/automatically-complete-virtual-orders-woocommerce/
- *  @snippet    Automatically complete orders in WooCommerce
- *
+ * Renders the social nav. Should be called from headers.php
  */
-add_action('woocommerce_thankyou', 'wpd_autocomplete_virtual_orders', 10, 1 );
-function wpd_autocomplete_virtual_orders( $order_id ) {
+function bkn_do_social_menu() {
+    global $bkn_theme_social_settings_fields;
 
-    if( ! $order_id ) return;
-
-    // Get order
-    $order = wc_get_order( $order_id );
-
-    // Do not auto-complete orders marked as On Hold, as those require
-    // manual review to confirm payment
-    if ( $order->status == 'on-hold' ) {
-        return;
-    }
-    // get order items = each product in the order
-    $items = $order->get_items();
-
-    // Set variable
-    $only_virtual = true;
-
-    foreach ( $items as $item ) {
-
-        // Get product id
-        $product = wc_get_product( $item['product_id'] );
-
-        // Is virtual
-        $is_virtual = $product->is_virtual();
-
-        // Is_downloadable
-        $is_downloadable = $product->is_downloadable();
-
-        if ( ! $is_virtual && ! $is_downloadable  ) {
-            $only_virtual = false;
+    $to_echo = '<div class="social"><ul class="menu">';
+    $fields_populated = 0;
+    foreach ($bkn_theme_social_settings_fields as $setting) {
+        $value = get_option($setting['id']);
+        if(!empty($value)){
+            $fields_populated++;
+            $to_echo .= '<li class="menu-item"><a href="' . $value . '" rel="noopener noreferrer" target="_blank"><i class="' . $setting['icon_class'] . '" aria-hidden="true"></i><span class="screen-reader-text">' . $setting['title'] . '</span></a></li>';
         }
-
     }
+    $to_echo .= '</ul></div>';
 
-    // true
-    if ( $only_virtual ) {
-        $order->update_status( 'completed' );
-    }
+    if($fields_populated > 0) echo $to_echo;
 }
 
+require_once 'functions-admin-page.php';
 require_once 'current-post-type-widget.php';
 
