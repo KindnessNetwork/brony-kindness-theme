@@ -1,6 +1,6 @@
 <?php
 
-define('BKN_THEME_VER', '1.5.12');
+define('BKN_THEME_VER', '1.5.13');
 
 $bkn_fallback_google_fonts_url = 'https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap';
 $bkn_fallback_fontawesome_url = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';

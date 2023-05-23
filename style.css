@@ -5,7 +5,7 @@ Theme URI: https://github.com/KindnessNetwork/brony-kindness-theme
 Author: Brony Kindness Network, LinuxPony
 Author URI: https://bronykindness.net/
 Description: WordPress Theme for the Brony Kindness Network. Based on BlankSlate WordPress Theme © 2011-2019 TidyThemes. BlankSlate is distributed under the terms of the GNU GPL.
-Version: 1.5.12
+Version: 1.5.13
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: one-column title-tag automatic-feed-links post-thumbnails html5 search-form woocommerce
@@ -491,15 +491,15 @@ html.admin-bar #menu {
           padding-right: 1em; } }
       #footer #footer-menu .widget-area li {
         display: block; }
-      #footer #footer-menu .widget-area a {
+      #footer #footer-menu .widget-area .menu a {
         display: block;
         padding: 0.5rem 0;
         text-transform: uppercase;
         text-decoration: none; }
-        #footer #footer-menu .widget-area a:link, #footer #footer-menu .widget-area a:visited {
-          color: #000000; }
-        #footer #footer-menu .widget-area a:hover, #footer #footer-menu .widget-area a:active {
-          color: #1b106c; }
+      #footer #footer-menu .widget-area a:link, #footer #footer-menu .widget-area a:visited {
+        color: #000000; }
+      #footer #footer-menu .widget-area a:hover, #footer #footer-menu .widget-area a:active {
+        color: #1b106c; }
       #footer #footer-menu .widget-area .social-links {
         padding-left: unset; }
         #footer #footer-menu .widget-area .social-links li {
@@ -799,7 +799,8 @@ aside .widget-container ul li {
   background: #ffffff;
   color: #000000;
   transition: 250ms;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75); }
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+  z-index: 101; }
   #return-to-top:hover, #return-to-top:active, #go-to-cart:hover, #go-to-cart:active {
     color: #ff0000;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
